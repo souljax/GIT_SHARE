@@ -97,7 +97,7 @@ export default defineComponent({
       return {
         id: index,
         name: logoName,
-        src: `/logos/${logoName}`,
+        src: `./logos/${logoName}`,
         x: x,
         y: y,
         vx: (Math.random() - 0.5) * 1.0,
