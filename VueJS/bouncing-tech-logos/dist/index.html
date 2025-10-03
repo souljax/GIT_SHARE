@@ -3,11 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bouncing Tech Logos - Package Test</title>
-  <script type="module" crossorigin src="./assets/index-D6wDrg0y.js"></script>
+  <title>Bouncing Tech Logos - Vue.js Demo</title>
+  <style>
+    body { 
+      margin: 0; 
+      font-family: Arial, sans-serif; 
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+    h1 { font-size: 3rem; margin-bottom: 20px; }
+    p { font-size: 1.2rem; margin-bottom: 30px; }
+    .loading { font-size: 1.5rem; color: #ffd700; }
+  </style>
+  <script type="module" crossorigin src="./assets/index-F5eXHaG1.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-kH0NhJ_a.css">
 </head>
 <body>
+  <div class="container">
+    <h1>🎮 Bouncing Tech Logos</h1>
+    <p>Interactive Vue.js component with collision physics</p>
+    <div class="loading">⚡ Loading Vue.js app...</div>
+  </div>
+  
   <div id="app"></div>
+  
 </body>
 </html>
