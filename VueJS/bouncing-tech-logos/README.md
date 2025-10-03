@@ -186,9 +186,7 @@ MIT License - free for commercial and personal use.
 
 **Created by [SOULJAX](https://souljax.com)**
 
-- 🌐 Website: [souljax.com](https://souljax.com)
-- 💼 Professional Vue.js development services
-- 🚀 More components available
+
 
 ---
 
@@ -211,4 +209,3 @@ npm run dev
 rm -rf node_modules package-lock.json
 ```
 
-**Ready to bounce! 🚀**
