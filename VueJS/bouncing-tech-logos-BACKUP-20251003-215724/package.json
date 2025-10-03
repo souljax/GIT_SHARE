@@ -1,0 +1,36 @@
+{
+  "name": "bouncing-tech-logos",
+  "version": "1.0.0",
+  "description": "Interactive bouncing technology logos with realistic physics - Created by SOULJAX",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --port 3030",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.0",
+    "vue-router": "^4.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.0",
+    "vite": "^5.0.0"
+  },
+  "keywords": [
+    "vue",
+    "vue3",
+    "component",
+    "animation",
+    "physics",
+    "logos",
+    "interactive",
+    "bouncing",
+    "tech",
+    "souljax"
+  ],
+  "author": {
+    "name": "SOULJAX",
+    "url": "https://souljax.com"
+  },
+  "license": "MIT"
+}
