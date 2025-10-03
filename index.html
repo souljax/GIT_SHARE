@@ -91,8 +91,8 @@
         .framework-card {
             background: rgba(255,255,255,0.95);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
+            border-radius: 15px;
+            padding: 25px;
             border: 1px solid rgba(255,255,255,0.3);
             transition: all 0.4s ease;
             position: relative;
@@ -105,29 +105,29 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, #4CAF50, #45a049);
         }
         
         .framework-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             background: rgba(255,255,255,0.98);
         }
         
         .framework-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
+            gap: 12px;
+            margin-bottom: 15px;
         }
         
         .framework-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
             background: #f8f9fa;
-            padding: 8px;
+            padding: 6px;
         }
         
         .framework-icon img {
@@ -139,7 +139,7 @@
         .framework-card h2 {
             color: #2c3e50;
             margin: 0;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 700;
         }
         
@@ -147,41 +147,101 @@
             display: inline-block;
             background: #4CAF50;
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
             font-weight: 600;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         .status.coming-soon {
             background: #ff9800;
         }
         
+        .packages-list {
+            margin: 15px 0;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 12px;
+        }
+        
+        .packages-list h4 {
+            color: #2c3e50;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .package-item {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 0.85rem;
+        }
+        
+        .package-name {
+            color: #4CAF50;
+            font-weight: 500;
+            flex: 1;
+        }
+        
+        .package-status {
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
         .framework-card p {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             color: #5a6c7d;
-            line-height: 1.7;
+            line-height: 1.5;
+            font-size: 0.9rem;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
         .demo-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
-            padding: 14px 28px;
+            padding: 10px 20px;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
         }
         
         .demo-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .source-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .source-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }
         
         .coming-soon-card {
@@ -228,48 +288,6 @@
             opacity: 0.8;
         }
         
-        .footer {
-            text-align: center;
-            color: white;
-            background: rgba(0,0,0,0.1);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .footer h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .footer p {
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-        
-        .github-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 16px 32px;
-            text-decoration: none;
-            border-radius: 12px;
-            margin-top: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .github-link:hover {
-            background: rgba(0,0,0,0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5rem;
@@ -284,7 +302,11 @@
             }
             
             .framework-card {
-                padding: 25px;
+                padding: 20px;
+            }
+            
+            .button-group {
+                flex-direction: column;
             }
         }
     </style>
@@ -324,11 +346,25 @@
                         <span class="status">Live</span>
                     </div>
                 </div>
-                <p>Interactive Vue.js components with advanced physics simulation, collision detection, hover effects, and responsive design. Fully converted to vanilla JS for GitHub Pages compatibility.</p>
-                <p><strong>🎮 Featured:</strong> Bouncing Tech Logos with energy transfer physics</p>
-                <a href="VueJS/bouncing-tech-logos/" class="demo-btn">
-                    🚀 Live Demo
-                </a>
+                
+                <div class="packages-list">
+                    <h4>📦 Available Packages:</h4>
+                    <div class="package-item">
+                        <span class="package-name">bouncing-tech-logos</span>
+                        <span class="package-status">✅ Ready</span>
+                    </div>
+                </div>
+                
+                <p>Interactive physics simulation with collision detection, hover effects, and energy transfer.</p>
+                
+                <div class="button-group">
+                    <a href="VueJS/bouncing-tech-logos/" class="demo-btn">
+                        🚀 Live Demo
+                    </a>
+                    <a href="https://github.com/souljax/souljax_dev_tools/tree/main/VueJS/bouncing-tech-logos" class="source-btn">
+                        � Git Source
+                    </a>
+                </div>
             </div>
             
             <div class="framework-card coming-soon-card">
@@ -341,11 +377,26 @@
                         <span class="status coming-soon">Coming Soon</span>
                     </div>
                 </div>
-                <p>Modern React components with hooks, TypeScript support, and performance optimizations. State-of-the-art patterns and best practices.</p>
-                <p><strong>🔮 Planned:</strong> Interactive UI components & animations</p>
-                <a href="#" class="demo-btn">
-                    ⏳ In Development
-                </a>
+                
+                <div class="packages-list">
+                    <h4>📦 Planned Packages:</h4>
+                    <div class="package-item">
+                        <span class="package-name">interactive-ui-kit</span>
+                        <span class="package-status">🔧 In Dev</span>
+                    </div>
+                    <div class="package-item">
+                        <span class="package-name">animation-helpers</span>
+                        <span class="package-status">� Planned</span>
+                    </div>
+                </div>
+                
+                <p>Modern React components with hooks, TypeScript support, and performance optimizations.</p>
+                
+                <div class="button-group">
+                    <a href="#" class="demo-btn" style="opacity: 0.6; pointer-events: none;">
+                        ⏳ In Development
+                    </a>
+                </div>
             </div>
             
             <div class="framework-card coming-soon-card">
@@ -358,11 +409,26 @@
                         <span class="status coming-soon">Coming Soon</span>
                     </div>
                 </div>
-                <p>Pure JavaScript utilities and components with zero dependencies. Lightweight, fast, and compatible with any framework or vanilla setup.</p>
-                <p><strong>🛠️ Planned:</strong> Animation helpers & DOM utilities</p>
-                <a href="#" class="demo-btn">
-                    ⏳ In Development
-                </a>
+                
+                <div class="packages-list">
+                    <h4>📦 Planned Packages:</h4>
+                    <div class="package-item">
+                        <span class="package-name">dom-utilities</span>
+                        <span class="package-status">📋 Planned</span>
+                    </div>
+                    <div class="package-item">
+                        <span class="package-name">animation-engine</span>
+                        <span class="package-status">📋 Planned</span>
+                    </div>
+                </div>
+                
+                <p>Pure JavaScript utilities with zero dependencies. Lightweight and framework-agnostic.</p>
+                
+                <div class="button-group">
+                    <a href="#" class="demo-btn" style="opacity: 0.6; pointer-events: none;">
+                        ⏳ In Development
+                    </a>
+                </div>
             </div>
             
             <div class="framework-card coming-soon-card">
@@ -375,23 +441,27 @@
                         <span class="status coming-soon">Coming Soon</span>
                     </div>
                 </div>
-                <p>Cross-framework assets, templates, and documentation. Deployment guides, conversion tools, and best practices for modern web development.</p>
-                <p><strong>📚 Planned:</strong> Templates & deployment guides</p>
-                <a href="#" class="demo-btn">
-                    ⏳ In Development
-                </a>
+                
+                <div class="packages-list">
+                    <h4>📦 Planned Resources:</h4>
+                    <div class="package-item">
+                        <span class="package-name">deployment-templates</span>
+                        <span class="package-status">📋 Planned</span>
+                    </div>
+                    <div class="package-item">
+                        <span class="package-name">conversion-guides</span>
+                        <span class="package-status">📋 Planned</span>
+                    </div>
+                </div>
+                
+                <p>Cross-framework assets, templates, and best practices for modern web development.</p>
+                
+                <div class="button-group">
+                    <a href="#" class="demo-btn" style="opacity: 0.6; pointer-events: none;">
+                        ⏳ In Development
+                    </a>
+                </div>
             </div>
-        </div>
-        
-        <div class="footer">
-            <h3>✨ Open Source & Production Ready</h3>
-            <p>All components are thoroughly tested and optimized for performance.</p>
-            <p>MIT licensed - Free for personal and commercial use.</p>
-            <p>Built with modern web standards and accessibility in mind.</p>
-            <a href="https://github.com/souljax/souljax_dev_tools" class="github-link">
-                📂 View Source Code
-            </a>
-        </div>
     </div>
 </body>
 </html>
