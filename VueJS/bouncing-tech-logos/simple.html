@@ -3,95 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bouncing Tech Logos - WORKING VERSION</title>
+  <title>Bouncing Tech Logos - Vue.js Component Demo</title>
   <style>
-    body { 
-      margin: 0; 
-      font-family: Arial, sans-serif; 
-      background: #000;
-      color: white;
-      overflow: hidden;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      overflow: hidden;
+      height: 100vh;
+    }
+
     .logo {
       position: absolute;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      transition: all 0.1s ease;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-    
+
     .logo:hover {
-      transform: scale(1.2);
-      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+      transform: scale(1.1);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .info {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      color: white;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .info h1 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+    }
+
+    .info p {
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
   </style>
 </head>
 <body>
-  <h1 style="position: fixed; top: 10px; left: 10px; z-index: 1000;">🎮 BOUNCING TECH LOGOS - WORKING!</h1>
+  <div class="info">
+    <h1>🎮 Bouncing Tech Logos</h1>
+    <p>Hover to pause • Click to visit website</p>
+  </div>
   
   <script>
     const logos = [
-      { name: 'Vue', color: '#4FC08D', url: 'https://vuejs.org' },
-      { name: 'React', color: '#61DAFB', url: 'https://reactjs.org' },
-      { name: 'Angular', color: '#DD0031', url: 'https://angular.io' },
-      { name: 'JS', color: '#F7DF1E', url: 'https://javascript.com' },
-      { name: 'TS', color: '#3178C6', url: 'https://typescriptlang.org' }
+      { name: 'vue_2.png', url: 'https://vuejs.org' },
+      { name: 'react2.png', url: 'https://reactjs.org' },
+      { name: 'angular_2.png', url: 'https://angular.io' },
+      { name: 'js.png', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
+      { name: 'typescript.png', url: 'https://www.typescriptlang.org' },
+      { name: 'nodejs_2.png', url: 'https://nodejs.org' },
+      { name: 'html.png', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
+      { name: 'css.png', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
+      { name: 'bootstrap.png', url: 'https://getbootstrap.com' },
+      { name: 'vite.png', url: 'https://vitejs.dev' },
+      { name: 'mongodb.png', url: 'https://www.mongodb.com' },
+      { name: 'nginx_2.png', url: 'https://nginx.org' }
     ];
     
     const balls = [];
+    let animationId;
     
+    // Créer les logos
     logos.forEach((logo, i) => {
       const ball = document.createElement('div');
       ball.className = 'logo';
-      ball.style.backgroundColor = logo.color;
-      ball.style.left = Math.random() * (window.innerWidth - 50) + 'px';
-      ball.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-      ball.innerHTML = logo.name;
-      ball.style.display = 'flex';
-      ball.style.alignItems = 'center';
-      ball.style.justifyContent = 'center';
-      ball.style.fontSize = '10px';
-      ball.style.fontWeight = 'bold';
-      ball.style.cursor = 'pointer';
       
+      const img = document.createElement('img');
+      img.src = `./logos/${logo.name}`;
+      img.alt = logo.name.replace('.png', '');
+      ball.appendChild(img);
+      
+      // Position aléatoire
+      const x = Math.random() * (window.innerWidth - 80);
+      const y = Math.random() * (window.innerHeight - 80);
+      
+      ball.style.left = x + 'px';
+      ball.style.top = y + 'px';
+      
+      // Click pour ouvrir le site
       ball.onclick = () => window.open(logo.url, '_blank');
       
       document.body.appendChild(ball);
       
-      balls.push({
+      const ballData = {
         element: ball,
-        x: parseInt(ball.style.left),
-        y: parseInt(ball.style.top),
-        vx: (Math.random() - 0.5) * 4,
-        vy: (Math.random() - 0.5) * 4,
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 3,
+        vy: (Math.random() - 0.5) * 3,
         paused: false
-      });
+      };
       
-      ball.onmouseenter = () => balls[i].paused = true;
-      ball.onmouseleave = () => balls[i].paused = false;
+      balls.push(ballData);
+      
+      // Hover pour pause
+      ball.onmouseenter = () => ballData.paused = true;
+      ball.onmouseleave = () => ballData.paused = false;
     });
     
+    // Animation avec collision
     function animate() {
-      balls.forEach(ball => {
+      balls.forEach((ball, i) => {
         if (ball.paused) return;
         
+        // Mouvement
         ball.x += ball.vx;
         ball.y += ball.vy;
         
-        if (ball.x <= 0 || ball.x >= window.innerWidth - 50) ball.vx *= -1;
-        if (ball.y <= 0 || ball.y >= window.innerHeight - 50) ball.vy *= -1;
+        // Rebond sur les bords
+        if (ball.x <= 0 || ball.x >= window.innerWidth - 80) {
+          ball.vx *= -1;
+          ball.x = Math.max(0, Math.min(window.innerWidth - 80, ball.x));
+        }
+        if (ball.y <= 0 || ball.y >= window.innerHeight - 80) {
+          ball.vy *= -1;
+          ball.y = Math.max(0, Math.min(window.innerHeight - 80, ball.y));
+        }
         
+        // Collision entre logos
+        balls.forEach((other, j) => {
+          if (i !== j && !other.paused) {
+            const dx = ball.x - other.x;
+            const dy = ball.y - other.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 80) {
+              // Échange des vitesses
+              const tempVx = ball.vx;
+              const tempVy = ball.vy;
+              ball.vx = other.vx;
+              ball.vy = other.vy;
+              other.vx = tempVx;
+              other.vy = tempVy;
+              
+              // Séparer les logos
+              const angle = Math.atan2(dy, dx);
+              const targetX = other.x + Math.cos(angle) * 80;
+              const targetY = other.y + Math.sin(angle) * 80;
+              ball.x = targetX;
+              ball.y = targetY;
+            }
+          }
+        });
+        
+        // Mettre à jour la position
         ball.element.style.left = ball.x + 'px';
         ball.element.style.top = ball.y + 'px';
       });
       
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(animate);
     }
     
+    // Redimensionnement
+    window.addEventListener('resize', () => {
+      balls.forEach(ball => {
+        ball.x = Math.min(ball.x, window.innerWidth - 80);
+        ball.y = Math.min(ball.y, window.innerHeight - 80);
+      });
+    });
+    
+    // Démarrer l'animation
     animate();
     
-    console.log('🚀 BASIC VERSION WORKING!');
+    console.log('🚀 Bouncing Tech Logos - Pure JS Version Working!');
   </script>
 </body>
 </html>
