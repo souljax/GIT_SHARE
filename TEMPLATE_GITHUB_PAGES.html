@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Component Demo - GitHub Pages Template</title>
+  <style>
+    /* 🎨 RESET CSS */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 📱 RESPONSIVE BREAKPOINTS */
+    @media (max-width: 768px) {
+      .container { padding: 10px; }
+    }
+
+    /* 🎯 LAYOUT STRUCTURE */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #2e3b4e;
+      color: #eee;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
+      margin-top: 55px;
+      margin-bottom: 55px;
+      padding: 20px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      background-color: #2e3b4e;
+      color: #eee;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    /* 📋 INFO BOX */
+    .info-box {
+      position: fixed;
+      top: 75px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+      max-width: 300px;
+    }
+
+    .info-box h3 {
+      margin-bottom: 10px;
+      color: #4CAF50;
+    }
+
+    .info-box p {
+      margin: 5px 0;
+    }
+
+    /* 🎮 INTERACTIVE ELEMENTS */
+    .interactive-element {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .interactive-element:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 💡 UTILITY CLASSES */
+    .hidden { display: none !important; }
+    .visible { display: block !important; }
+    .center { text-align: center; }
+    .loading { opacity: 0.6; pointer-events: none; }
+
+    /* 🎨 COMPONENT SPECIFIC STYLES */
+    .demo-container {
+      background: #f5f5f5;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .demo-button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 5px;
+      transition: background 0.3s ease;
+    }
+
+    .demo-button:hover {
+      background: #45a049;
+    }
+
+    .demo-button:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔝 HEADER -->
+  <div class="header">
+    COMPONENT DEMO
+  </div>
+  
+  <!-- 📋 INFO BOX -->
+  <div class="info-box">
+    <h3>[Framework - component : demo ]</h3>
+    <p>🖱️ <strong>Hover:</strong> Interactive elements</p>
+    <p>🖱️ <strong>Click:</strong> Trigger actions</p>
+    <p>⚡ <strong>Features:</strong></p>
+    <p style="margin-left: 15px; font-size: 12px;">• Feature 1</p>
+    <p style="margin-left: 15px; font-size: 12px;">• Feature 2</p>
+    <p style="margin-left: 15px; font-size: 12px;">• Feature 3</p>
+  </div>
+  
+  <!-- 📄 MAIN CONTENT -->
+  <div class="content">
+    <div class="demo-container center">
+      <h1 id="main-title">Component Loading...</h1>
+      
+      <div style="margin: 20px 0;">
+        <button class="demo-button" onclick="handleDemo()">
+          Demo Action
+        </button>
+        <button class="demo-button" onclick="resetDemo()">
+          Reset
+        </button>
+      </div>
+      
+      <div id="demo-result" class="hidden">
+        <p>Result will appear here...</p>
+      </div>
+      
+      <div id="demo-counter" class="center">
+        Count: <span id="count-value">0</span>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 🔽 FOOTER -->
+  <div class="footer">
+    GITHUB PAGES DEMO
+  </div>
+  
+  <script>
+    // 🗃️ GLOBAL STATE
+    let state = {
+      title: 'Interactive Component Demo',
+      count: 0,
+      demoActive: false,
+      results: [],
+      loading: false
+    };
+
+    // 🎯 MAIN FUNCTIONS
+    function handleDemo() {
+      console.log('🎮 Demo action triggered');
+      
+      state.count++;
+      state.demoActive = true;
+      
+      // Simulate some action
+      showResult(`Demo executed ${state.count} times!`);
+      updateUI();
+    }
+
+    function resetDemo() {
+      console.log('🔄 Demo reset');
+      
+      state.count = 0;
+      state.demoActive = false;
+      state.results = [];
+      
+      hideResult();
+      updateUI();
+    }
+
+    function showResult(message) {
+      const resultDiv = document.getElementById('demo-result');
+      resultDiv.querySelector('p').textContent = message;
+      resultDiv.classList.remove('hidden');
+      resultDiv.classList.add('visible');
+    }
+
+    function hideResult() {
+      const resultDiv = document.getElementById('demo-result');
+      resultDiv.classList.add('hidden');
+      resultDiv.classList.remove('visible');
+    }
+
+    // 🔄 UI UPDATE FUNCTION
+    function updateUI() {
+      // Update title
+      document.getElementById('main-title').textContent = state.title;
+      
+      // Update counter
+      document.getElementById('count-value').textContent = state.count;
+      
+      // Update button states
+      const demoBtn = document.querySelector('button[onclick="handleDemo()"]');
+      if (state.loading) {
+        demoBtn.disabled = true;
+        demoBtn.textContent = 'Loading...';
+      } else {
+        demoBtn.disabled = false;
+        demoBtn.textContent = 'Demo Action';
+      }
+      
+      // Additional UI updates based on state...
+    }
+
+    // 🎛️ EVENT HANDLERS
+    function setupEventListeners() {
+      // Window resize handler
+      window.addEventListener('resize', debounce(() => {
+        console.log('📐 Window resized');
+        // Handle responsive adjustments
+      }, 250));
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Space') {
+          e.preventDefault();
+          handleDemo();
+        }
+        if (e.key === 'Escape') {
+          resetDemo();
+        }
+      });
+
+      // Custom event listeners...
+    }
+
+    // 🛠️ UTILITY FUNCTIONS
+    function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(timeout);
+          func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+      };
+    }
+
+    function animate(element, property, start, end, duration = 300) {
+      const startTime = performance.now();
+      
+      function updateAnimation(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const value = start + (end - start) * progress;
+        element.style[property] = value + (property.includes('opacity') ? '' : 'px');
+        
+        if (progress < 1) {
+          requestAnimationFrame(updateAnimation);
+        }
+      }
+      
+      requestAnimationFrame(updateAnimation);
+    }
+
+    // 🚀 INITIALIZATION
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🚀 Component initialized');
+      
+      // Initial setup
+      state.title = 'Component Ready!';
+      updateUI();
+      setupEventListeners();
+      
+      // Show ready state
+      setTimeout(() => {
+        document.body.classList.remove('loading');
+        console.log('✅ Component fully loaded');
+      }, 100);
+    });
+
+    // 🎯 COMPONENT-SPECIFIC FUNCTIONS
+    // Add your converted Vue/React logic here...
+    
+    /*
+    CONVERSION TEMPLATE:
+    
+    1. Vue data() / React useState → state object
+    2. Vue methods / React functions → global functions
+    3. Vue @events / React onEvents → addEventListener or inline handlers
+    4. Vue v-if / React conditional → element.style.display or classList
+    5. Vue v-for / React map → forEach + createElement
+    6. Vue computed / React useMemo → functions that return calculated values
+    7. Vue watch / React useEffect → call updateUI() when state changes
+    */
+
+    console.log('📋 Template loaded - Ready for component conversion!');
+  </script>
+</body>
+</html>
