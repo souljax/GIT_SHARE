@@ -1,0 +1,15 @@
+# Demo files for GitHub Pages (not needed in npm package)
+index.html
+simple.html
+test.html
+
+# Demo assets duplicates
+public/
+
+# Build artifacts
+dist/
+*.log
+
+# IDE files
+.vscode/
+.idea/
