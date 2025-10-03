@@ -1,0 +1,10 @@
+/* jax_font definition */
+@font-face {
+  font-family: 'jax_font';
+  src: url('./jax_font.woff') format('woff'),
+       url('./jax_font.ttf') format('truetype'),
+       url('./jax_font.svg#jax_font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
