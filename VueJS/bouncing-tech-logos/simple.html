@@ -13,99 +13,204 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #2e3b4e;
+      color: #eee;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+
+    .content {
+      flex: 1;
+      position: relative;
       overflow: hidden;
-      height: 100vh;
+      margin-top: 55px;
+      margin-bottom: 55px;
+    }
+
+    .test-info {
+      position: fixed;
+      top: 75px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .test-info h3 {
+      margin-bottom: 10px;
+      color: #4CAF50;
+    }
+
+    .test-info p {
+      margin: 5px 0;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 55px;
+      background-color: #2e3b4e;
+      color: #eee;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
     }
 
     .logo {
       position: absolute;
-      width: 80px;
-      height: 80px;
+      width: 50px;
+      height: 50px;
       cursor: pointer;
-      transition: transform 0.2s ease;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    .logo:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+      pointer-events: auto;
     }
 
     .logo img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      border-radius: 10px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     }
 
-    .info {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      color: white;
-      z-index: 1000;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px;
-      border-radius: 10px;
+    .logo-tooltip {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.95);
+      color: #333;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border: 1px solid rgba(0,0,0,0.1);
+      z-index: 10;
+      pointer-events: none;
+      animation: tooltipFadeIn 0.2s ease-out;
     }
 
-    .info h1 {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-    }
-
-    .info p {
-      font-size: 0.9rem;
-      opacity: 0.8;
+    @keyframes tooltipFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <div class="info">
-    <h1>🎮 Bouncing Tech Logos</h1>
-    <p>Hover to pause • Click to visit website</p>
+  <div class="header">
+    HEADER
+  </div>
+  
+  <div class="content">
+    <div class="test-info">
+      <h3>[VueJS - component : bouncing-tech-logos ]</h3>
+      <p>🖱️ <strong>Hover:</strong> Pause logos</p>
+      <p>🖱️ <strong>Click:</strong> Visit websites</p>
+      <p>⚡ <strong>Logo & borders collisions :</strong></p>
+      <p style="margin-left: 15px; font-size: 12px;">• Moving logos bounce off each other</p>
+      <p style="margin-left: 15px; font-size: 12px;">• Paused logos become fixed obstacles</p>
+      <p style="margin-left: 15px; font-size: 12px;">• Energy transfer on impact</p>
+    </div>
+  </div>
+  
+  <div class="footer">
+    FOOTER
   </div>
   
   <script>
-    const logos = [
-      { name: 'vue_2.png', url: 'https://vuejs.org' },
-      { name: 'react2.png', url: 'https://reactjs.org' },
-      { name: 'angular_2.png', url: 'https://angular.io' },
-      { name: 'js.png', url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript' },
-      { name: 'typescript.png', url: 'https://www.typescriptlang.org' },
-      { name: 'nodejs_2.png', url: 'https://nodejs.org' },
-      { name: 'html.png', url: 'https://developer.mozilla.org/en-US/docs/Web/HTML' },
-      { name: 'css.png', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS' },
-      { name: 'bootstrap.png', url: 'https://getbootstrap.com' },
-      { name: 'vite.png', url: 'https://vitejs.dev' },
-      { name: 'mongodb.png', url: 'https://www.mongodb.com' },
-      { name: 'nginx_2.png', url: 'https://nginx.org' }
-    ];
-    
+    const logoUrls = {
+      'react.png': 'https://react.dev/',
+      'react2.png': 'https://react.dev/',
+      'vue_2.png': 'https://vuejs.org/',
+      'js.png': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
+      'typescript.png': 'https://www.typescriptlang.org/',
+      'nodejs_2.png': 'https://nodejs.org/',
+      'html.png': 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+      'css.png': 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+      'bootstrap.png': 'https://getbootstrap.com/',
+      'vite.png': 'https://vitejs.dev/',
+      'mongodb.png': 'https://www.mongodb.com/',
+      'MongoDB2.png': 'https://www.mongodb.com/',
+      'supabase.png': 'https://supabase.com/',
+      'google-cloud.png': 'https://cloud.google.com/',
+      'nginx_2.png': 'https://nginx.org/',
+      'ubuntu.png': 'https://ubuntu.com/',
+      'shopify.png': 'https://www.shopify.com/',
+      'angular_2.png': 'https://angular.io/'
+    };
+
+    const availableLogos = Object.keys(logoUrls);
     const balls = [];
     let animationId;
     
+    const containerBounds = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+      headerHeight: 55,
+      footerHeight: 55
+    };
+    
+    // Sélectionner 12 logos aléatoirement comme dans Vue.js
+    const shuffled = [...availableLogos].sort(() => Math.random() - 0.5);
+    const selectedLogos = shuffled.slice(0, 12);
+    
     // Créer les logos
-    logos.forEach((logo, i) => {
+    selectedLogos.forEach((logoName, i) => {
       const ball = document.createElement('div');
       ball.className = 'logo';
       
       const img = document.createElement('img');
-      img.src = `./logos/${logo.name}`;
-      img.alt = logo.name.replace('.png', '');
+      img.src = `./logos/${logoName}`;
+      img.alt = logoName.replace('.png', '');
       ball.appendChild(img);
       
-      // Position aléatoire
-      const x = Math.random() * (window.innerWidth - 80);
-      const y = Math.random() * (window.innerHeight - 80);
+      // Position aléatoire dans la zone de contenu (éviter header/footer)
+      const baseSize = 50;
+      const x = Math.random() * (containerBounds.width - baseSize * 1.5);
+      const y = containerBounds.headerHeight + Math.random() * 
+                (containerBounds.height - containerBounds.headerHeight - containerBounds.footerHeight - baseSize * 1.5);
       
       ball.style.left = x + 'px';
       ball.style.top = y + 'px';
       
       // Click pour ouvrir le site
-      ball.onclick = () => window.open(logo.url, '_blank');
+      ball.onclick = () => {
+        const url = logoUrls[logoName];
+        if (url) {
+          window.open(url, '_blank', 'noopener,noreferrer');
+          console.log(`🔗 Ouverture de ${logoName} : ${url}`);
+        }
+      };
       
       document.body.appendChild(ball);
       
@@ -113,66 +218,176 @@
         element: ball,
         x: x,
         y: y,
-        vx: (Math.random() - 0.5) * 3,
-        vy: (Math.random() - 0.5) * 3,
-        paused: false
+        vx: (Math.random() - 0.5) * 1.0,
+        vy: (Math.random() - 0.5) * 1.0,
+        rotation: 0,
+        rotationSpeed: (Math.random() - 0.5) * 1.25,
+        opacity: Math.random() * 0.2 + 0.8,
+        actualWidth: baseSize,
+        actualHeight: baseSize,
+        paused: false,
+        savedVx: 0,
+        savedVy: 0,
+        savedRotationSpeed: 0,
+        tooltip: null
       };
       
       balls.push(ballData);
       
-      // Hover pour pause
-      ball.onmouseenter = () => ballData.paused = true;
-      ball.onmouseleave = () => ballData.paused = false;
+      // Hover pour pause avec tooltip
+      ball.onmouseenter = () => {
+        if (!ballData.paused) {
+          ballData.savedVx = ballData.vx;
+          ballData.savedVy = ballData.vy;
+          ballData.savedRotationSpeed = ballData.rotationSpeed;
+          
+          ballData.vx = 0;
+          ballData.vy = 0;
+          ballData.rotationSpeed = 0;
+          ballData.rotation = 0;
+          ballData.paused = true;
+          
+          // Créer tooltip
+          const tooltip = document.createElement('div');
+          tooltip.className = 'logo-tooltip';
+          tooltip.textContent = 'go to website';
+          tooltip.style.top = (ballData.actualHeight + 5) + 'px';
+          ball.appendChild(tooltip);
+          ballData.tooltip = tooltip;
+        }
+      };
+      
+      ball.onmouseleave = () => {
+        if (ballData.paused) {
+          ballData.vx = ballData.savedVx;
+          ballData.vy = ballData.savedVy;
+          ballData.rotationSpeed = ballData.savedRotationSpeed;
+          ballData.paused = false;
+          
+          // Supprimer tooltip
+          if (ballData.tooltip) {
+            ball.removeChild(ballData.tooltip);
+            ballData.tooltip = null;
+          }
+        }
+      };
     });
     
-    // Animation avec collision
+    // Animation avec collision EXACTE comme dans Vue.js
     function animate() {
       balls.forEach((ball, i) => {
-        if (ball.paused) return;
-        
-        // Mouvement
-        ball.x += ball.vx;
-        ball.y += ball.vy;
-        
-        // Rebond sur les bords
-        if (ball.x <= 0 || ball.x >= window.innerWidth - 80) {
-          ball.vx *= -1;
-          ball.x = Math.max(0, Math.min(window.innerWidth - 80, ball.x));
+        if (!ball.paused) {
+          ball.x += ball.vx;
+          ball.y += ball.vy;
+          ball.rotation += ball.rotationSpeed;
         }
-        if (ball.y <= 0 || ball.y >= window.innerHeight - 80) {
-          ball.vy *= -1;
-          ball.y = Math.max(0, Math.min(window.innerHeight - 80, ball.y));
-        }
-        
-        // Collision entre logos
-        balls.forEach((other, j) => {
-          if (i !== j && !other.paused) {
-            const dx = ball.x - other.x;
-            const dy = ball.y - other.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
+      });
+
+      // Vérifier les collisions entre logos
+      for (let i = 0; i < balls.length; i++) {
+        for (let j = i + 1; j < balls.length; j++) {
+          const ball1 = balls[i];
+          const ball2 = balls[j];
+          
+          const ball1Radius = Math.max(ball1.actualWidth, ball1.actualHeight) / 2;
+          const ball2Radius = Math.max(ball2.actualWidth, ball2.actualHeight) / 2;
+          const dx = ball1.x + ball1.actualWidth/2 - (ball2.x + ball2.actualWidth/2);
+          const dy = ball1.y + ball1.actualHeight/2 - (ball2.y + ball2.actualHeight/2);
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const minDistance = ball1Radius + ball2Radius;
+          
+          if (distance < minDistance) {
+            const angle = Math.atan2(dy, dx);
+            const overlap = minDistance - distance;
+            const separateX = Math.cos(angle) * overlap * 0.5;
+            const separateY = Math.sin(angle) * overlap * 0.5;
             
-            if (distance < 80) {
-              // Échange des vitesses
-              const tempVx = ball.vx;
-              const tempVy = ball.vy;
-              ball.vx = other.vx;
-              ball.vy = other.vy;
-              other.vx = tempVx;
-              other.vy = tempVy;
+            // Séparation intelligente
+            if (!ball1.paused) {
+              ball1.x += separateX;
+              ball1.y += separateY;
+            }
+            if (!ball2.paused) {
+              ball2.x -= separateX;
+              ball2.y -= separateY;
+            }
+            
+            if (ball1.paused && !ball2.paused) {
+              ball2.x -= separateX;
+              ball2.y -= separateY;
+            } else if (!ball1.paused && ball2.paused) {
+              ball1.x += separateX;
+              ball1.y += separateY;
+            }
+            
+            // Physique réaliste avec transfert d'énergie
+            const cos = Math.cos(angle);
+            const sin = Math.sin(angle);
+            
+            if (ball1.paused && !ball2.paused) {
+              const speed2 = Math.sqrt(ball2.vx * ball2.vx + ball2.vy * ball2.vy);
+              const bounceBoost = 1.3;
+              ball2.vx = -cos * speed2 * bounceBoost;
+              ball2.vy = -sin * speed2 * bounceBoost;
+            } else if (!ball1.paused && ball2.paused) {
+              const speed1 = Math.sqrt(ball1.vx * ball1.vx + ball1.vy * ball1.vy);
+              const bounceBoost = 1.3;
+              ball1.vx = cos * speed1 * bounceBoost;
+              ball1.vy = sin * speed1 * bounceBoost;
+            } else if (!ball1.paused && !ball2.paused) {
+              const v1n = ball1.vx * cos + ball1.vy * sin;
+              const v1t = -ball1.vx * sin + ball1.vy * cos;
+              const v2n = ball2.vx * cos + ball2.vy * sin;
+              const v2t = -ball2.vx * sin + ball2.vy * cos;
               
-              // Séparer les logos
-              const angle = Math.atan2(dy, dx);
-              const targetX = other.x + Math.cos(angle) * 80;
-              const targetY = other.y + Math.sin(angle) * 80;
-              ball.x = targetX;
-              ball.y = targetY;
+              const boost = 1.1;
+              const newV1n = v2n * boost;
+              const newV2n = v1n * boost;
+              
+              ball1.vx = newV1n * cos - v1t * sin;
+              ball1.vy = newV1n * sin + v1t * cos;
+              ball2.vx = newV2n * cos - v2t * sin;
+              ball2.vy = newV2n * sin + v2t * cos;
+            }
+            
+            // Limiter la vitesse max
+            const maxSpeed = 3;
+            const ball1Speed = Math.sqrt(ball1.vx * ball1.vx + ball1.vy * ball1.vy);
+            const ball2Speed = Math.sqrt(ball2.vx * ball2.vx + ball2.vy * ball2.vy);
+            
+            if (ball1Speed > maxSpeed) {
+              ball1.vx = (ball1.vx / ball1Speed) * maxSpeed;
+              ball1.vy = (ball1.vy / ball1Speed) * maxSpeed;
+            }
+            if (ball2Speed > maxSpeed) {
+              ball2.vx = (ball2.vx / ball2Speed) * maxSpeed;
+              ball2.vy = (ball2.vy / ball2Speed) * maxSpeed;
             }
           }
-        });
+        }
+      }
+
+      // Rebonds sur les bords avec perte d'énergie
+      balls.forEach(ball => {
+        const wallDamping = 0.85;
         
-        // Mettre à jour la position
+        if (ball.x <= 0 || ball.x >= containerBounds.width - ball.actualWidth) {
+          ball.vx = -ball.vx * wallDamping;
+          ball.x = Math.max(0, Math.min(ball.x, containerBounds.width - ball.actualWidth));
+        }
+
+        if (ball.y <= containerBounds.headerHeight || 
+            ball.y >= containerBounds.height - containerBounds.footerHeight - ball.actualHeight) {
+          ball.vy = -ball.vy * wallDamping;
+          ball.y = Math.max(containerBounds.headerHeight, 
+                           Math.min(ball.y, containerBounds.height - containerBounds.footerHeight - ball.actualHeight));
+        }
+        
+        // Mettre à jour la position et rotation
         ball.element.style.left = ball.x + 'px';
         ball.element.style.top = ball.y + 'px';
+        ball.element.style.transform = `rotate(${ball.rotation}deg)`;
+        ball.element.style.opacity = ball.opacity;
       });
       
       animationId = requestAnimationFrame(animate);
@@ -180,16 +395,23 @@
     
     // Redimensionnement
     window.addEventListener('resize', () => {
+      containerBounds.width = window.innerWidth;
+      containerBounds.height = window.innerHeight;
+      
       balls.forEach(ball => {
-        ball.x = Math.min(ball.x, window.innerWidth - 80);
-        ball.y = Math.min(ball.y, window.innerHeight - 80);
+        if (ball.y < containerBounds.headerHeight) {
+          ball.y = containerBounds.headerHeight + 10;
+        }
+        if (ball.y > containerBounds.height - containerBounds.footerHeight - ball.actualHeight) {
+          ball.y = containerBounds.height - containerBounds.footerHeight - ball.actualHeight - 10;
+        }
       });
     });
     
     // Démarrer l'animation
     animate();
     
-    console.log('🚀 Bouncing Tech Logos - Pure JS Version Working!');
+    console.log('🚀 Bouncing Tech Logos - Pure JS Version EXACT comme Vue.js!');
   </script>
 </body>
 </html>
