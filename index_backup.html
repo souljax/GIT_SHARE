@@ -174,14 +174,10 @@
         
         .package-item {
             display: flex;
-            justify-content: space-between;
+            justify-content: between;
             align-items: center;
-            margin: 8px 0;
+            margin: 5px 0;
             font-size: 0.85rem;
-            padding: 8px;
-            background: white;
-            border-radius: 6px;
-            border: 1px solid #e9ecef;
         }
         
         .package-name {
@@ -193,55 +189,6 @@
         .package-status {
             color: #666;
             font-size: 0.8rem;
-            margin-right: 8px;
-        }
-        
-        .package-buttons {
-            display: flex;
-            gap: 6px;
-        }
-        
-        .mini-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 4px 8px;
-            text-decoration: none;
-            border-radius: 4px;
-            font-weight: 500;
-            font-size: 0.75rem;
-            transition: all 0.2s ease;
-        }
-        
-        .mini-demo-btn {
-            background: #4CAF50;
-            color: white;
-        }
-        
-        .mini-demo-btn:hover {
-            background: #45a049;
-            transform: translateY(-1px);
-        }
-        
-        .mini-source-btn {
-            background: #333;
-            color: white;
-        }
-        
-        .mini-source-btn:hover {
-            background: #555;
-            transform: translateY(-1px);
-        }
-        
-        .mini-btn.disabled {
-            background: #ccc;
-            color: #666;
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-        
-        .mini-btn.disabled:hover {
-            transform: none;
         }
         
         .framework-card p {
@@ -251,8 +198,65 @@
             font-size: 0.9rem;
         }
         
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .demo-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+        }
+        
+        .demo-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+        
+        .source-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #333, #555);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .source-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+        
         .coming-soon-card {
             opacity: 0.7;
+        }
+        
+        .coming-soon-card .demo-btn {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            cursor: not-allowed;
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
+        }
+        
+        .coming-soon-card .demo-btn:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
         }
         
         .stats {
@@ -301,9 +305,8 @@
                 padding: 20px;
             }
             
-            .package-buttons {
+            .button-group {
                 flex-direction: column;
-                gap: 4px;
             }
         }
     </style>
@@ -330,6 +333,8 @@
             </div>
         </div>
         
+
+        
         <div class="frameworks">
             <div class="framework-card">
                 <div class="framework-header">
@@ -347,18 +352,19 @@
                     <div class="package-item">
                         <span class="package-name">bouncing-tech-logos</span>
                         <span class="package-status">✅ Ready</span>
-                        <div class="package-buttons">
-                            <a href="VueJS/bouncing-tech-logos/" class="mini-btn mini-demo-btn">
-                                🚀 Demo
-                            </a>
-                            <a href="https://github.com/souljax/souljax_dev_tools/tree/main/VueJS/bouncing-tech-logos" class="mini-btn mini-source-btn">
-                                📂 Source
-                            </a>
-                        </div>
                     </div>
                 </div>
                 
                 <p>Interactive physics simulation with collision detection, hover effects, and energy transfer.</p>
+                
+                <div class="button-group">
+                    <a href="VueJS/bouncing-tech-logos/" class="demo-btn">
+                        🚀 Live Demo
+                    </a>
+                    <a href="https://github.com/souljax/souljax_dev_tools/tree/main/VueJS/bouncing-tech-logos" class="source-btn">
+                        � Git Source
+                    </a>
+                </div>
             </div>
             
             <div class="framework-card coming-soon-card">
@@ -377,30 +383,20 @@
                     <div class="package-item">
                         <span class="package-name">interactive-ui-kit</span>
                         <span class="package-status">🔧 In Dev</span>
-                        <div class="package-buttons">
-                            <a href="#" class="mini-btn mini-demo-btn disabled">
-                                ⏳ Demo
-                            </a>
-                            <a href="#" class="mini-btn mini-source-btn disabled">
-                                📂 Source
-                            </a>
-                        </div>
                     </div>
                     <div class="package-item">
                         <span class="package-name">animation-helpers</span>
-                        <span class="package-status">📋 Planned</span>
-                        <div class="package-buttons">
-                            <a href="#" class="mini-btn mini-demo-btn disabled">
-                                ⏳ Demo
-                            </a>
-                            <a href="#" class="mini-btn mini-source-btn disabled">
-                                📂 Source
-                            </a>
-                        </div>
+                        <span class="package-status">� Planned</span>
                     </div>
                 </div>
                 
                 <p>Modern React components with hooks, TypeScript support, and performance optimizations.</p>
+                
+                <div class="button-group">
+                    <a href="#" class="demo-btn" style="opacity: 0.6; pointer-events: none;">
+                        ⏳ In Development
+                    </a>
+                </div>
             </div>
             
             <div class="framework-card coming-soon-card">
@@ -419,30 +415,20 @@
                     <div class="package-item">
                         <span class="package-name">dom-utilities</span>
                         <span class="package-status">📋 Planned</span>
-                        <div class="package-buttons">
-                            <a href="#" class="mini-btn mini-demo-btn disabled">
-                                ⏳ Demo
-                            </a>
-                            <a href="#" class="mini-btn mini-source-btn disabled">
-                                📂 Source
-                            </a>
-                        </div>
                     </div>
                     <div class="package-item">
                         <span class="package-name">animation-engine</span>
                         <span class="package-status">📋 Planned</span>
-                        <div class="package-buttons">
-                            <a href="#" class="mini-btn mini-demo-btn disabled">
-                                ⏳ Demo
-                            </a>
-                            <a href="#" class="mini-btn mini-source-btn disabled">
-                                📂 Source
-                            </a>
-                        </div>
                     </div>
                 </div>
                 
                 <p>Pure JavaScript utilities with zero dependencies. Lightweight and framework-agnostic.</p>
+                
+                <div class="button-group">
+                    <a href="#" class="demo-btn" style="opacity: 0.6; pointer-events: none;">
+                        ⏳ In Development
+                    </a>
+                </div>
             </div>
             
             <div class="framework-card coming-soon-card">
@@ -461,32 +447,21 @@
                     <div class="package-item">
                         <span class="package-name">deployment-templates</span>
                         <span class="package-status">📋 Planned</span>
-                        <div class="package-buttons">
-                            <a href="#" class="mini-btn mini-demo-btn disabled">
-                                ⏳ Demo
-                            </a>
-                            <a href="#" class="mini-btn mini-source-btn disabled">
-                                📂 Source
-                            </a>
-                        </div>
                     </div>
                     <div class="package-item">
                         <span class="package-name">conversion-guides</span>
                         <span class="package-status">📋 Planned</span>
-                        <div class="package-buttons">
-                            <a href="#" class="mini-btn mini-demo-btn disabled">
-                                ⏳ Demo
-                            </a>
-                            <a href="#" class="mini-btn mini-source-btn disabled">
-                                📂 Source
-                            </a>
-                        </div>
                     </div>
                 </div>
                 
                 <p>Cross-framework assets, templates, and best practices for modern web development.</p>
+                
+                <div class="button-group">
+                    <a href="#" class="demo-btn" style="opacity: 0.6; pointer-events: none;">
+                        ⏳ In Development
+                    </a>
+                </div>
             </div>
-        </div>
     </div>
 </body>
 </html>
