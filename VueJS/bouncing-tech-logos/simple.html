@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bouncing Tech Logos - WORKING VERSION</title>
+  <style>
+    body { 
+      margin: 0; 
+      font-family: Arial, sans-serif; 
+      background: #000;
+      color: white;
+      overflow: hidden;
+    }
+    
+    .logo {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transition: all 0.1s ease;
+    }
+    
+    .logo:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    }
+  </style>
+</head>
+<body>
+  <h1 style="position: fixed; top: 10px; left: 10px; z-index: 1000;">🎮 BOUNCING TECH LOGOS - WORKING!</h1>
+  
+  <script>
+    const logos = [
+      { name: 'Vue', color: '#4FC08D', url: 'https://vuejs.org' },
+      { name: 'React', color: '#61DAFB', url: 'https://reactjs.org' },
+      { name: 'Angular', color: '#DD0031', url: 'https://angular.io' },
+      { name: 'JS', color: '#F7DF1E', url: 'https://javascript.com' },
+      { name: 'TS', color: '#3178C6', url: 'https://typescriptlang.org' }
+    ];
+    
+    const balls = [];
+    
+    logos.forEach((logo, i) => {
+      const ball = document.createElement('div');
+      ball.className = 'logo';
+      ball.style.backgroundColor = logo.color;
+      ball.style.left = Math.random() * (window.innerWidth - 50) + 'px';
+      ball.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+      ball.innerHTML = logo.name;
+      ball.style.display = 'flex';
+      ball.style.alignItems = 'center';
+      ball.style.justifyContent = 'center';
+      ball.style.fontSize = '10px';
+      ball.style.fontWeight = 'bold';
+      ball.style.cursor = 'pointer';
+      
+      ball.onclick = () => window.open(logo.url, '_blank');
+      
+      document.body.appendChild(ball);
+      
+      balls.push({
+        element: ball,
+        x: parseInt(ball.style.left),
+        y: parseInt(ball.style.top),
+        vx: (Math.random() - 0.5) * 4,
+        vy: (Math.random() - 0.5) * 4,
+        paused: false
+      });
+      
+      ball.onmouseenter = () => balls[i].paused = true;
+      ball.onmouseleave = () => balls[i].paused = false;
+    });
+    
+    function animate() {
+      balls.forEach(ball => {
+        if (ball.paused) return;
+        
+        ball.x += ball.vx;
+        ball.y += ball.vy;
+        
+        if (ball.x <= 0 || ball.x >= window.innerWidth - 50) ball.vx *= -1;
+        if (ball.y <= 0 || ball.y >= window.innerHeight - 50) ball.vy *= -1;
+        
+        ball.element.style.left = ball.x + 'px';
+        ball.element.style.top = ball.y + 'px';
+      });
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    console.log('🚀 BASIC VERSION WORKING!');
+  </script>
+</body>
+</html>
