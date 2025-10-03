@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIT_SHARE - Multi-Framework Component Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .frameworks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .framework-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .framework-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .framework-card h2 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+        
+        .framework-card p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+        
+        .demo-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-btn:hover {
+            background: linear-gradient(45deg, #45a049, #4CAF50);
+            transform: scale(1.05);
+        }
+        
+        .coming-soon {
+            opacity: 0.6;
+            background: #f5f5f5;
+        }
+        
+        .coming-soon .demo-btn {
+            background: #999;
+            cursor: not-allowed;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .github-link {
+            display: inline-block;
+            background: #333;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 20px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        
+        .github-link:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 GIT_SHARE</h1>
+            <p>Multi-Framework Component Library - Shared, Tested, Ready to Use</p>
+        </div>
+        
+        <div class="frameworks">
+            <div class="framework-card">
+                <h2>🟢 Vue.js Components</h2>
+                <p>Interactive Vue.js components with advanced features like collision physics, hover effects, and responsive design.</p>
+                <p><strong>Available:</strong> Bouncing Tech Logos</p>
+                <a href="VueJS/bouncing-tech-logos/" class="demo-btn">🎮 Live Demo</a>
+            </div>
+            
+            <div class="framework-card coming-soon">
+                <h2>⚛️ React Components</h2>
+                <p>Modern React components with hooks, TypeScript support, and performance optimizations.</p>
+                <p><strong>Status:</strong> Coming Soon</p>
+                <a href="#" class="demo-btn">🔜 Coming Soon</a>
+            </div>
+            
+            <div class="framework-card coming-soon">
+                <h2>🟡 Vanilla JS Utilities</h2>
+                <p>Pure JavaScript utilities and components with no framework dependencies.</p>
+                <p><strong>Status:</strong> Coming Soon</p>
+                <a href="#" class="demo-btn">🔜 Coming Soon</a>
+            </div>
+            
+            <div class="framework-card coming-soon">
+                <h2>🛠️ Shared Utils</h2>
+                <p>Cross-framework utilities, helpers, and common functions for all projects.</p>
+                <p><strong>Status:</strong> Coming Soon</p>
+                <a href="#" class="demo-btn">🔜 Coming Soon</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <h3>💫 Open Source & Free</h3>
+            <p>All components are MIT licensed and ready for commercial use.</p>
+            <p>Download, customize, and use in your projects!</p>
+            <a href="https://github.com/souljax/GIT_SHARE" class="github-link">📂 View on GitHub</a>
+        </div>
+    </div>
+</body>
+</html>
