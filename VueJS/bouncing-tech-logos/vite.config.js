@@ -4,6 +4,7 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [vue()],
+  base: './', // Chemins relatifs pour GitHub Pages
   server: {
     port: 3030
   },
