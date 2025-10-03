@@ -76,10 +76,10 @@ export default defineComponent({
         console.warn('Fallback vers liste statique')
         // Fallback si problème
         const fallbackLogos = [
-          'react.png', 'vue_2.png', 'js.png', 'typescript.png', 'nodejs_2.png',
+          'react.png', 'vue.png', 'js.png', 'typescript.png', 'nodejs.png',
           'html.png', 'css.png', 'bootstrap.png', 'vite.png', 'mongodb.png',
-          'supabase.png', 'google-cloud.png', 'nginx_2.png', 'ubuntu.png',
-          'shopify.png', 'angular_2.png'
+          'supabase.png', 'google-cloud.png', 'nginx.png', 'ubuntu.png',
+          'angular.png', 'github.png'
         ]
         availableLogos.value = fallbackLogos
         return fallbackLogos
@@ -188,23 +188,21 @@ export default defineComponent({
     // MAPPING DES URLS OFFICIELLES
     const logoUrls = {
       'react.png': 'https://react.dev/',
-      'react2.png': 'https://react.dev/',
-      'vue_2.png': 'https://vuejs.org/',
+      'vue.png': 'https://vuejs.org/',
       'js.png': 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
       'typescript.png': 'https://www.typescriptlang.org/',
-      'nodejs_2.png': 'https://nodejs.org/',
+      'nodejs.png': 'https://nodejs.org/',
       'html.png': 'https://developer.mozilla.org/en-US/docs/Web/HTML',
       'css.png': 'https://developer.mozilla.org/en-US/docs/Web/CSS',
       'bootstrap.png': 'https://getbootstrap.com/',
       'vite.png': 'https://vitejs.dev/',
       'mongodb.png': 'https://www.mongodb.com/',
-      'MongoDB2.png': 'https://www.mongodb.com/',
       'supabase.png': 'https://supabase.com/',
       'google-cloud.png': 'https://cloud.google.com/',
-      'nginx_2.png': 'https://nginx.org/',
+      'nginx.png': 'https://nginx.org/',
       'ubuntu.png': 'https://ubuntu.com/',
-      'shopify.png': 'https://www.shopify.com/',
-      'angular_2.png': 'https://angular.io/'
+      'angular.png': 'https://angular.io/',
+      'github.png': 'https://github.com/'
     }
 
     // CLIC SUR LOGO = OUVERTURE PAGE OFFICIELLE
