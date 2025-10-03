@@ -83,4 +83,5 @@ temp/
 *~
 *.backup
 *.bak
-*.orig
+*.orig*.md
+TEMPLATE_*.html
