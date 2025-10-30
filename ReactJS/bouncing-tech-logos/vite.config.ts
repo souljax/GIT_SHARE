@@ -6,6 +6,9 @@ import { resolve } from 'path'
 export default defineConfig({
   plugins: [react()],
   
+  // Base path for GitHub Pages subdirectory
+  base: './',
+  
   // Development server configuration
   server: {
     port: 3030,
