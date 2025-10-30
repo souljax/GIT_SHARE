@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   pointer-events: none; /* Container non-cliquable */
-  z-index: 5; /* En arrière-plan mais visible */
+  z-index: 10; /* En arrière-plan des contenus mais visible */
 }
 
 .bouncing-logo {
@@ -13,7 +13,7 @@
   pointer-events: auto; /* LOGOS CLIQUABLES ! */
   cursor: pointer;
   transition: transform 0.1s ease-out;
-  z-index: 5; /* Même niveau que le container */
+  z-index: 10; /* Même niveau que le container, en arrière-plan */
 }
 
 .bouncing-logo:hover {

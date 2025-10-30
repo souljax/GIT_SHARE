@@ -53,33 +53,16 @@ function App() {
         </div>
       </div>
 
-      {/* Main Content Area */}
+      {/* Main Content Area - Card à gauche */}
       <main className="main-content">
         <div className="container">
-          <div className="demo-section">
-            <h2>Interactive Demo</h2>
-            <p>
-              This React component features realistic physics simulation with enhanced performance. 
-              Logos bounce around the screen, freeze when hovered, and accelerate when hitting walls.
-            </p>
-            
-            <div className="features-grid">
-              <div className="feature">
-                <h3>🎯 Interactive</h3>
-                <p>Hover to pause, click to explore</p>
-              </div>
-              <div className="feature">
-                <h3>⚡ Enhanced</h3>
-                <p>30% faster than Vue version</p>
-              </div>
-              <div className="feature">
-                <h3>🎪 Energetic</h3>
-                <p>Wall collisions boost energy</p>
-              </div>
-              <div className="feature">
-                <h3>🎨 TypeScript</h3>
-                <p>Full type safety included</p>
-              </div>
+          <div className="content-card">
+            <div className="demo-section">
+              <h2>Interactive Demo</h2>
+              <p>
+                This React component features realistic physics simulation with enhanced performance. 
+                Logos bounce around the screen, freeze when hovered, and accelerate when hitting walls.
+              </p>
             </div>
           </div>
         </div>
