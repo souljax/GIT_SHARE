@@ -16,7 +16,7 @@ Vue.js 3+ components with Composition API
 
 ### ⚛️ ReactJS/ 
 React components with modern hooks
-- *Coming soon...*
+- **bouncing-tech-logos** - Interactive physics-based logo animation
 
 ### 🟡 VanillaJS/
 Pure JavaScript utilities and components
